@@ -34,21 +34,21 @@ jobs:
         shell: bash
         run: |
           tag=$(git describe --tags --abbrev=0)
-          release_name="App-$tag-${{ matrix.target }}"
+          release_name="ClickNLoad2MyJD-$tag-${{ matrix.target }}"
           # Build everything
           dotnet publish ClickNLoad2MyJD/ClickNLoad2MyJD.csproj --framework netcoreapp3.1 --self-contained false --runtime "${{ matrix.target }}" -c Release -o "$release_name"
           # Pack files
           if [ "${{ matrix.target }}" == "win-x64" ]; then
             # Pack to zip for Windows
-            7z a -tzip "./release/${release_name}.zip" "./${release_name}/*"
+            7z a -tzip "${release_name}.zip" "./${release_name}/*"
           else
-          tar czvf "./release/${release_name}.tar.gz" "$release_name"
+          tar czvf "${release_name}.tar.gz" "$release_name"
           fi
           # Delete output directory
           rm -r "$release_name"
       - name: Publish
         uses: softprops/action-gh-release@v1
         with:
-          files: "./release/ClickNLoad2MyJD*"
+          files: "ClickNLoad2MyJD-*"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
