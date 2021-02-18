@@ -3,6 +3,8 @@ A simple console application, which fetches Click'n'Load links and send them dir
 Works without any browser extension and on every desktop platform!
 I made this very much because of missing MyJDownloader browser extension for Safari on Mac OS X.
 
+![Alt text](/Screenshot.png?raw=true "Application screenshot")
+
 ### Requirements
 You need to install the .NET Core 3.1 Runtime, which you can find [here](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 
